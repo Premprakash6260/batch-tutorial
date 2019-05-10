@@ -14,4 +14,5 @@ setlocal
 	call :sum
 	echo Value of x + y is %add%
 endlocal
+pause
 goto :eof
