@@ -1,4 +1,5 @@
 @echo off
+cls
 goto :main
 :sum
 setlocal
