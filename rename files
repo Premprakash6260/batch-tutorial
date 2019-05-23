@@ -1,0 +1,37 @@
+@echo off
+cls
+setlocal EnableDelayedExpansion
+goto :main
+
+:main
+setlocal
+  :: path of files (this is a comment)
+	cd C:\Users\Premprakash\Desktop\Snaptube java
+	for %%g in ( *.html ) do (
+		set name=
+		set filename=%%g
+		echo !filename!
+      :: length of the filename is already known, here not more than 20 (actually it is way less than 20)
+		for /l %%f in ( 0, 1, 20 ) do (
+			set offset=%%f
+			set character=!filename:~%%f,1!
+			set name=!name!!character!
+			if !character! equ . (
+        :: add the extension you want to append after '.' e.g here mp4
+				set name=!name!mp4
+				echo !name!
+				ren !filename! !name!
+        
+        :: logic to break out of inner for loop
+				for /l %%f in ( !offset!, 1, 20 ) do (
+					echo.
+				)
+			)
+
+
+		)
+		
+	)
+endlocal
+pause
+goto :eof
